@@ -182,9 +182,10 @@ Example architecture:
 
 ```bash
 # Clone the repo
-git clone https://github.com/your-username/cnn-classifier.git
+git clone https://github.com/Mahadevkharmate/End-to-End-Industrial-Grade-DL-Project.git
 cd cnn-classifier
-
+```
+```bash
 # Create virtual environment
 python -m venv venv
 source venv/bin/activate   # Linux/Mac
@@ -200,3 +201,11 @@ python src/train.py --config config.yaml
 uvicorn deployment.app:app --reload
 
 API docs: http://127.0.0.1:8000/docs
+
+```bash
+## Dataset Description
+The training archive contains 25,000 images of dogs and cats. Train your algorithm on these files and predict the labels for test1.zip (1 = dog, 0 = cat).
+Files -> 3 files
+Size-> 853.96 MB
+Type-> zip, csv
+```
