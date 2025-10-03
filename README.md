@@ -1,5 +1,100 @@
 # 📄 End-to-End CNN Classifier – Industrial-Grade Project
 
+---
+# Project Workflow
+---
+## Workflows to follow:->
+1. update **`config.yaml`** file  → Project configs (paths, setup)
+2. update **`secrets.yaml`** file [Optional-Credentials] → Credentials (optional, secure)
+3. update **`params.yaml`** → Hyperparameters (tunable, trackable)
+4. update **`entity/`** → Config schema (dataclasses)
+5. update **`configuration.py`** in src/config/ → Config manager
+6. update **`components/`** in src/ → Independent tasks
+7. update **`pipelines/`** in src/→ Workflow orchestration
+8. update **`main.py`** → Entry point
+
+## 🚀 Steps to Follow in detailed explanation:
+---
+### **1. Update `config.yaml`**
+
+* Stores **general configuration** (non-sensitive).
+* Examples:
+  * Dataset paths
+  * Model save directories
+  * Logging paths
+* ✅ Purpose: Keeps project flexible and avoids hardcoding.
+---
+---
+### **2. Update `secrets.yaml` [Optional]**
+
+* Stores **sensitive credentials** (excluded from version control).
+* Examples:
+  * API keys
+  * Database credentials
+  * Cloud tokens
+* ✅ Purpose: Protects secrets and prevents accidental leaks.
+
+---
+### **3. Update `params.yaml`**
+
+* Stores **experiment parameters / hyperparameters**.
+* Examples:
+  * Batch size, learning rate, dropout rate, epochs
+* ✅ Purpose: Supports reproducibility and experiment tracking (DVC, MLflow).
+---
+
+### **4. Update `entity/`**
+
+* Define **Entity Classes** (dataclasses / pydantic models).
+* Examples:
+  * `DataIngestionConfig`
+  * `TrainingConfig`
+  * `ModelConfig`
+* ✅ Purpose: Provides structured configs instead of raw dicts.
+---
+### **5. Update `ConfigurationManager` in `src/config/configuration.py`**
+
+* Central class to **read config files** (`config.yaml`, `params.yaml`, `secrets.yaml`).
+* Converts them into **Entity objects** for clean usage.
+* ✅ Purpose: Single point of configuration handling.
+---
+### **6. Update `components/` in `src/components/`**
+
+* Write **modular components** for each task.
+* Examples:
+  * `data_ingestion.py` → Load/download dataset
+  * `data_validation.py` → Schema checks
+  * `model_trainer.py` → Train model
+  * `model_evaluation.py` → Evaluate metrics
+* ✅ Purpose: Each component = independent, reusable, testable.
+---
+### **7. Update `pipeline/` in `src/pipelines/`**
+
+* Define **workflow pipelines** using components.
+* Examples:
+  * `training_pipeline.py` → ingestion → validation → training → evaluation
+  * `prediction_pipeline.py` → preprocessing → inference
+* ✅ Purpose: Orchestrates multiple tasks into an end-to-end pipeline.
+---
+### **8. Update `main.py` in `src/`**
+
+* Project **entry point**.
+* Calls pipeline(s) for execution.
+* Example:
+```bash
+from src.pipelines.training_pipeline import TrainingPipeline
+
+if __name__ == "__main__":
+    pipeline = TrainingPipeline()
+    pipeline.run_pipeline()
+```
+* ✅ Purpose: Run the whole workflow with one command:
+```bash
+  python main.py
+```
+---
+
+
 ## 1. Executive Summary
 This project implements an **industrial-grade Convolutional Neural Network (CNN) image classification system** designed for real-world deployment.  
 It covers the complete ML lifecycle:
