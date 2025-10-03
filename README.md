@@ -1,7 +1,7 @@
 # 📄 End-to-End CNN Classifier – Industrial-Grade Project
 
 ---
-# Project Workflow
+## Project Workflow
 ---
 ## Workflows to follow:->
 1. update **`config.yaml`** file  → Project configs (paths, setup)
