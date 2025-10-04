@@ -1,0 +1,11 @@
+# here we write configuration settings
+artifacts_root: artifacts
+model_root: model
+
+#data ingestion configuration settings(like path, data_source_url,data_split_path etc)
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_url: https://github.com/Mahadevkharmate/Datasets/raw/refs/heads/main/cat-dog-data.zip
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+
