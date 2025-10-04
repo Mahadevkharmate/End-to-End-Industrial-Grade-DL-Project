@@ -110,21 +110,14 @@ def load_bin(path: Path) -> Any:
 
 #get_size function to get the size of a file in KB or MB
 @ensure_annotations
-def get_size(path: Path, size_in_KB: bool = False) -> Union[float, int]:
-    """Gets the size of a file in KB or MB.
+def get_size(path: Path) -> str:
+    """get size in KB
 
     Args:
-        path (Path): Path to the file.
-        size_in_KB (bool, optional): If True, returns size in KB. If False, returns size in MB. Defaults to False.
+        path (Path): path of the file
 
     Returns:
-        Union[float, int]: Size of the file in KB or MB.(returns the size of the file in the specified unit)
+        str: size in KB
     """
-    size_in_bytes = os.path.getsize(path)
-    if size_in_KB:
-        size = size_in_bytes / 1024  # Convert bytes to KB
-    else:
-        size = size_in_bytes / (1024 * 1024)  # Convert bytes to MB
-    return f" ~ {round(size, 2)} {'KB' if size_in_KB else 'MB'}"
-
-
+    size_in_kb = round(os.path.getsize(path)/1024)
+    return f"~ {size_in_kb} KB"
