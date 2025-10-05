@@ -1,2 +1,8 @@
-#hyperparameters for model
-key: value
+AUGMENTATION: True
+IMAGE_SIZE: [224,224,3] #it depends upon model, this is as we are using VGG16 model
+BATCH_SIZE: 32
+INCLUDE_TOP: False
+EPOCHS: 2
+CLASSES: 2
+WEIGHTS: imagenet  #going to use Transfer Learning
+LEARNING_RATE: 0.001
