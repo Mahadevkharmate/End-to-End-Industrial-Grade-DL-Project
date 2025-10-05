@@ -1,5 +1,6 @@
 from src.CNNClassifier.pipeline.data_ingestion_pipeline import DataIngestionTrainingPipeline
 from src.CNNClassifier.pipeline.prepare_base_model_pipeline import PrepareBaseModelTrainingPipeline
+from src.CNNClassifier.pipeline.callbacks_pipeline import CallbacksTrainingPipeline
 from src.CNNClassifier.logger import logging
 
 STAGE_NAME =" Data Ingestion stage"
@@ -20,6 +21,17 @@ try:
     prepare_base_model = PrepareBaseModelTrainingPipeline()
     prepare_base_model.main()
     logging.info(f"stage{STAGE_NAME} completed..........")
+except Exception as e:
+    logging.exception(e)
+    raise e
+
+STAGE_NAME = "PREPARE CALLBACKS"
+try:
+    logging.info(f" stage{STAGE_NAME} started..............")
+    callbacks_pipeline = CallbacksTrainingPipeline()
+    callbacks_pipeline.main()
+    logging.info(f"stage{STAGE_NAME} completed..........")
+
 except Exception as e:
     logging.exception(e)
     raise e
