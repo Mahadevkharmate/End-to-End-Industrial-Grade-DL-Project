@@ -3,7 +3,9 @@ from src.CNNClassifier.utils.common import read_yaml, create_directories
 from pathlib import Path 
 import sys
 import os
-from CNNClassifier.entity import (DataIngestionConfig)
+from CNNClassifier.entity import (DataIngestionConfig,
+                                  PrepareBaseModelConfig
+                                  )
 class ConfigurationManager:
     def __init__(self,
                  config_filepath = CONFIG_FILE_PATH,
@@ -26,3 +28,23 @@ class ConfigurationManager:
             unzip_dir = config.unzip_dir
             )
         return data_ingestion_config
+    
+
+    #these are required configuration to prepare base model from keras VGG16
+    def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
+        config = self.config.prepare_base_model
+        create_directories([config.root_dir])
+        params =self.params
+
+        prepare_base_model_config = PrepareBaseModelConfig(
+            root_dir = Path(config.root_dir),
+            base_model_path = Path(config.base_model_path),
+            updated_base_model_path =  Path(config.updated_base_model_path),
+            params_image_size = params.IMAGE_SIZE,
+            params_include_top = params.INCLUDE_TOP,
+            params_classes =  params.CLASSES,
+            params_weights = params.WEIGHTS,
+            params_learning_rate = params.LEARNING_RATE
+
+        )
+        return prepare_base_model_config
