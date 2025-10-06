@@ -1,4 +1,6 @@
 #prepare my components
+# import tensorflow as tf
+
 import os
 import tensorflow as tf
 from zipfile import ZipFile
@@ -7,14 +9,14 @@ import time
 from CNNClassifier.entity import CallabacksConfig
 
 class Callbacks:
-    def __init__(self, config:CallabacksConfig):
+    def __init__(self, config: CallabacksConfig):
         self.config = config
 
     @property
     def _create_tb_callbacks(self):
-        timestamp = time.strftime("%Y-%m-%d:%H-%M-%S")
+        timestamp = time.strftime("%Y-%m-%d-%H-%M-%S")
         tb_runing_log_dir = os.path.join(self.config.tensorboard_root_log_dir,f"tb_logs_at_{timestamp}")
-        return tf.keras.callbacks.TensorBoard(log_dir= tb_runing_log_dir)
+        return tf.keras.callbacks.TensorBoard(log_dir = tb_runing_log_dir)
     
     @property
     def _create_chkp_callbacks(self):

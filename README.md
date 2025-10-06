@@ -304,3 +304,8 @@ Files -> 3 files
 Size-> 853.96 MB
 Type-> zip, csv
 ```
+
+```bash
+#to see Tensorboard UI
+$ tensorboard --logdir=artifacts/callbacks/tensorboard_root_log_dir/
+```
