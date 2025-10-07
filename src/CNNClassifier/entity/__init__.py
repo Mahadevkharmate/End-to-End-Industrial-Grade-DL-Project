@@ -1,5 +1,6 @@
 from src.CNNClassifier.entity.config_entity import (DataIngestionConfig,
                                                     PrepareBaseModelConfig,
                                                     CallabacksConfig,
-                                                    TrainingConfig
+                                                    TrainingConfig,
+                                                    EvaluationConfig
                                                     )

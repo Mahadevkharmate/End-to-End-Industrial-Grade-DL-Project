@@ -6,7 +6,8 @@ import os
 from CNNClassifier.entity import (DataIngestionConfig,
                                   PrepareBaseModelConfig,
                                   CallabacksConfig,
-                                  TrainingConfig
+                                  TrainingConfig,
+                                  EvaluationConfig
                                   )
 class ConfigurationManager:
     def __init__(self,
@@ -88,4 +89,14 @@ class ConfigurationManager:
             params_image_size = params.IMAGE_SIZE
             )
         return trainig_config
+    
+    def get_validation_data_config(self) ->EvaluationConfig:
+        evaluation_config = EvaluationConfig(
+            path_of_model = self.config.training.trained_model_path,
+            training_data = os.path.join(self.config.data_ingestion.unzip_dir, "PetImages"),
+            all_params = self.params,
+            params_image_size = self.params.IMAGE_SIZE,
+            params_batch_size =self.params.BATCH_SIZE
+        )
+        return evaluation_config
 
