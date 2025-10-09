@@ -8,7 +8,7 @@ from pathlib import Path  #for handling and manipulating filesystem paths
 from typing import Any, List, Dict, Union  #for type hinting
 from ensure import ensure_annotations  #for runtime type checking of function arguments and return values
 from CNNClassifier.logger import logging #custom logging module for logging messages
-
+import base64
 
 # Function to read YAML file and return its contents as a dictionary
 @ensure_annotations
@@ -121,3 +121,13 @@ def get_size(path: Path) -> str:
     """
     size_in_kb = round(os.path.getsize(path)/1024)
     return f"~ {size_in_kb} KB"
+
+def decodeImage(imgstring, filename):
+    imgdata = base64.b64decode(imgstring)
+    with open(filename, "wb") as f:
+        f.write(imgdata)
+        f.close()
+
+def encodeImageIntoBase64(croppedImagePath):
+    with open(croppedImagePath, "rb") as f:
+        return base64.b64encode(f.read())
