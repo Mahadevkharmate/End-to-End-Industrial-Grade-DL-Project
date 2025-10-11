@@ -319,13 +319,14 @@ $ tensorboard --logdir=artifacts/callbacks/tensorboard_root_log_dir/
 5. open in browser: http://localhost:8080/
 ```
 
-```bash
+
 # AWS-CICD-Deployment-with-Github-Actions
 
 ## 1. Login to AWS console.
 
 ## 2. Create IAM user for deployment
 
+```bash
 	#with specific access
 
 	1. EC2 access : It is virtual machine
@@ -351,46 +352,44 @@ $ tensorboard --logdir=artifacts/callbacks/tensorboard_root_log_dir/
 
 	2. AmazonEC2FullAccess
 
-	
-## 3. Create ECR repo to store/save docker image
-    - Save the URI: 315865595366.dkr.ecr.us-east-1.amazonaws.com/simple-app
 
+## 3. Create ECR repo to store/save docker image
+    - Save the URI: 412962593190.dkr.ecr.us-east-1.amazonaws.com/catdog
 	
 ## 4. Create EC2 machine (Ubuntu) 
-
+     - downlaod .pem file for EC2
 ## 5. Open EC2 and Install docker in EC2 Machine:
 	
-	
 	#optinal
-
+# here we are updating package manager
 	sudo apt-get update -y
-
 	sudo apt-get upgrade
 	
 	#required
-
+#installing docker in vertual machine
 	curl -fsSL https://get.docker.com -o get-docker.sh
-
 	sudo sh get-docker.sh
-
 	sudo usermod -aG docker ubuntu
-
-	newgrp docker
+	newgrp docker 
+  # also check docker version $ docker --version
 	
-# 6. Configure EC2 as self-hosted runner:
-    setting>actions>runner>new self hosted runner> choose os> then run command one by one
+# 6. Configure EC2-Vertual machine as self-hosted runner with GitHub Actions:
+    go to specific github project repository settings > actions > runner > new self hosted runner > choose os > then run all commands one by one.
+ ![commands available]("documents/self hosted runner commands.png")
 
 
 # 7. Setup github secrets:
-
+ - in gitHub > secrets and variables > Actions > New repository secret> add one by one all
+ ## dowmnloaded from AWS ECR
     AWS_ACCESS_KEY_ID=
-
     AWS_SECRET_ACCESS_KEY=
-
+## see in AWS right corner
     AWS_REGION = us-east-1
+## ECR URI copied after creation of ECR
+    AWS_ECR_LOGIN_URI = demo>>  412962593190.dkr.ecr.us-east-1.amazonaws.com
+    ECR_REPOSITORY_NAME = catdog
 
-    AWS_ECR_LOGIN_URI = demo>>  566373416292.dkr.ecr.ap-south-1.amazonaws.com
-
-    ECR_REPOSITORY_NAME = simple-app
+## commit to Github main branch --> finaly your APP is LIVE!
+	
 
 ```
