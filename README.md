@@ -375,7 +375,8 @@ $ tensorboard --logdir=artifacts/callbacks/tensorboard_root_log_dir/
 	
 # 6. Configure EC2-Vertual machine as self-hosted runner with GitHub Actions:
     go to specific github project repository settings > actions > runner > new self hosted runner > choose os > then run all commands one by one.
- ![commands available]("documents/self hosted runner commands.png")
+ ![commands available]("documents/self hosted runner commands.png")<img width="1920" height="1080" alt="Screenshot 2025-10-09 093928" src="https://github.com/user-attachments/assets/ccc60203-7371-4385-9df4-d5d4546c442e" />
+
 
 
 # 7. Setup github secrets:
@@ -391,5 +392,6 @@ $ tensorboard --logdir=artifacts/callbacks/tensorboard_root_log_dir/
 
 ## commit to Github main branch --> finaly your APP is LIVE!
 	
+
 
 ```
